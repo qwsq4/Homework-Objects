@@ -13,4 +13,21 @@ public class Author {
     public String getAuthorLastName() {
         return authorLastName;
     }
+
+    public String toString() {
+        return authorName + " " + authorLastName;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(31 * (authorName.length() + authorLastName.length()));
+    }
+
+    public boolean equals(Author other) {
+        if (this.hashCode() != other.hashCode()) {
+            return false;
+        } else {
+            return (this.authorName == other.authorName && this.authorLastName == other.authorLastName);
+        }
+    }
 }

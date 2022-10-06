@@ -25,7 +25,19 @@ public class Book  {
         this.year = year;
     }
 
-    public String getBook() {
-        return getName() + ", " + getAuthor() + ", " + getYear();
+    public String toString() {
+        return getName() + ", " + author.toString() + ", " + getYear();
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(31 * (name.length() + author.toString().length() + year));
+    }
+
+    public boolean equals(Book other) {
+        if (this.hashCode() != other.hashCode()) {
+            return false;
+        } else {
+            return this.name == other.name && this.author.equals(other.author) && this.year == other.year;
+        }
     }
 }
